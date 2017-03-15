@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="customjs/jquery-3.1.1.min.js"></script>
+  <script src="customjs/GKQEManager.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <script>
+    // Page init event
+    //title对照表
+    var titleMap = {};
+    titleMap['first-page'] = 'GKQE接口数据返回测试';
+
+    //GKQE的默认请求数据
+    var defaultdata={
+      'relId':'799547',
+      'user_occup':'成人',
+      'tea_group':'9',
+      'type':'stu',
+      'buildver':'1.3.0.2',
+      'lang':'Cn',
+      'from':'Mac',
+      'os':'Mac',
+      'region':'CN',
+      'ssoToken':'68390abdc597e0fbb1b912ae06c9176d',
+      'token':'799547_c7394371f7652d6894332b24186cbb0estu',
+      'is_buy':'1',
+      'strategy':'ClassRoom_Base_1v1'
+    }
+
+    document.addEventListener('init',function(e){
+      var page = e.target;
+      if(titleMap[page.id] != undefined)
+      {
+        //设置title
+        $('#toolbar-title').html(titleMap[page.id]);
+      }
+      if(page.id == 'first-page' && page.isinited == undefined)
+      {
+        page.isinited = true;
+        //添加点击事件
+        $($(page).find('input')).each(function(id,node){
+          node.id = node.placeholder;
+        })
+        $(page).find('#commitInfo').click(reqGKQEInfo)
+        $(page).find('#fillDefaultInfo').click(fillInputInfo)
+        $(page).find('#clearInfo').click(clearInputinfo)
+      }
+
+    })
+
+    //填充默认数据
+    function fillInputInfo(){
+      for(key in defaultdata){
+        var inputNode = document.getElementById(key)
+        if(inputNode != undefined){
+          inputNode.value = defaultdata[key];
+        }
+      }
+    }
+
+    /**
+     * 清空数据
+     * */
+    function clearInputinfo(){
+      $('#first-page').find('input').each(function(idx,node){
+        node.value = '';
+        node.placeholder = node.id;
+      })
+
+    }
+
+    //请求GKQE配置信息
+    function reqGKQEInfo(){
+
+      var myData = {}
+      var cansend = true;
+      $('#first-page').find('input').each(function(idx,node){
+        if(node.value != node.id && node.value != "") {
+          myData[node.id] = node.value;
+        }else{
+          cansend = false;
+        }
+      })
+
+      if(cansend == false){
+        alert('请将所有参数填写完整')
+        return;
+      }
+//      $.ajax({
+//        url:'http://ac26.51talk.com/Ac/AcConf/getGKAndQE',
+//        dataType:'json',
+//        type:'post',
+//        data:myData,
+//        success:function(data,b){
+//          //ons.notification.alert(JSON.stringify(data));
+//          alert(JSON.stringify(data));
+//        },
+//        error:function(err){
+//          alert(err.responseText);
+//        }
+//      })
+
+
+      GKQEManager.instance.requestGKQE(myData);
+    }
+
+    GKQEManager.instance.addEventListener(GKQEManager.Complete,function(e){
+      alert('加载完毕')
+    })
+
+    GKQEManager.instance.addEventListener(GKQEManager.ServerErr,function(e){
+      alert(e.target.info)
+    })
+
+  </script>
+</head>
+<body>
+<!--<ons-page>-->
+  <!--<ons-toolbar>-->
+    <!--<div class="center" id="toolbar-title"></div>-->
+  <!--</ons-toolbar>-->
+  <!--<ons-tabbar position="auto" animation="slide">-->
+    <!--<ons-tab label="GKQE返回" page="GKQE_Data_test.html" active>-->
+    <!--</ons-tab>-->
+  <!--</ons-tabbar>-->
+<!--</ons-page>-->
+
+</body>
+</html>
