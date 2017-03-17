@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="customjs/jquery-3.1.1.min.js"></script>
+    <script src="customjs/GKQEManager.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script>
+        /**
+         * 重置GKQE配置为本地配置
+         * @param groupType 用户组类型  值为 stu  tea  admin,默认为stu
+         * */
+        function resetGKQEConfig(groupType){
+            GKQEManager.instance.resetScByDc(groupType);
+        }
+
+        //设置GKQE配置的某一个配置项
+        function setGKQEValueByKey(key,val){
+            GKQEManager.instance.setConfig(key, val)
+        }
+
+        //获取GKQE配置的某一个配置项
+        function getGKQEValueByKey(key){
+            return GKQEManager.instance.getConfig(key);
+        }
+
+        //请求GKQE配置信息
+        function reqGKQEInfo(reqDataStr){
+
+            GKQEManager.instance.requestGKQE(JSON.parse(reqDataStr));
+        }
+
+        //GKQE配置加载完毕
+        GKQEManager.instance.addEventListener(GKQEManager.Complete,function(e){
+            var obj = {
+                "code":"0",
+                "msg":"服务器端GKQE加载完毕"
+            };
+            //回调swift
+            window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+        })
+
+        //GKQE配置加载失败,使用本地默认配置
+        GKQEManager.instance.addEventListener(GKQEManager.ServerErr,function(e){
+            var obj = {
+                "code":"1",
+                "msg":"服务器端GKQE加载失败,使用本地默认配置"
+            };
+            //回调swift
+            window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+        })
+
+        //GKQE配置加载失败,使用本地默认配置
+        GKQEManager.instance.addEventListener(GKQEManager.RequestErr,function(e){
+            var obj = {
+                "code":"2",
+                "msg":"无法请求接口"
+            };
+            //回调swift
+            window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+        })
+
+        //GKQE配置加载失败,使用本地默认配置
+        GKQEManager.instance.addEventListener(GKQEManager.CovertErr,function(e){
+            var obj = {
+                "code":"4",
+                "msg":"返回的数据转换JSON时发生错误"
+            };
+            //回调swift
+            window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+        })
+
+    </script>
+</head>
+<body>
+
+
+<ons-page>
+    <ons-toolbar>
+        <div class="center" id="toolbar-title"></div>
+    </ons-toolbar>
+    <ons-tabbar position="auto" animation="slide">
+        <ons-tab label="GKQE返回" page="GKQE_Data_test.html" active>
+        </ons-tab>
+    </ons-tabbar>
+</ons-page>
+
+</body>
+</html>
