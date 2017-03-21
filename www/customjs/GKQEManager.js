@@ -4,13 +4,62 @@
 function GKQEManager(){
 
     /**
+     * 策略名
+     * */
+    this.strategy = "";
+    /**
      * 当前的GKQE请求ID
      * */
-    var currentID = 0;
+    var currentGKQEID = 0;
+    var currentZNGZID = 0;
     /**
      * 默认配置
      * */
     this.defaultConfig = {};
+
+    /**
+     * 默认智能感知配置
+     * */
+    this.defaultZNGZConfig = {
+        /*开关,0-关闭，1-打开*/
+        "enable":"1",
+        /*上报前需取本地设备次数*/
+        "getdervicecount":"6",
+        /*每次取本地设备状态间隔时间*/
+        "getdervicetime":"5",
+        /*扬声器低于警告值提示警告*/
+        "speakerwarning":"30",
+        /*麦克风于警告值提示警告*/
+        "micphonewarning":"30",
+        /*cpu状态占用变差阈值*/
+        "cpuwarningvalue":"80",
+        /*cpu变差报警次数阈值*/
+        "cpuwarningtimes":"3",
+        /*内存变差占用阈值*/
+        "memorywarningvalue":"80",
+        /*内存变差报警次数阈值*/
+        "memorywarningtimes":"3",
+        /*本地上行丢包报警阈值，超过阈值报警，单位百分比*/
+        "uploadpacketlosswarningrate":"30",
+        /*本地上行丢包超过阈值报警，变差次数，超过次数认为麦克风连接异常*/
+        "uploadpacketlosswarningtimes":"4",
+        /*本地上行丢包连接中断阈值，超过阈值认为连接中断*/
+        "uploadpacketnoconnectvalue":"80",
+        /*本地上行丢包连接最近出现连续次数,默认只有最近两次出现上行丢包超过中断阈值认为是连接中断*/
+        "uploadpacketnoconnecttimes":"2",
+        /*本地下行丢包报警阈值，超过阈值报警，单位百分比*/
+        "downloadpacketlosswarningrate":"30",
+        /*本地下行丢包超过阈值报警，变差次数，超过次数认为扬声器连接异常*/
+        "downloadpacketlosswarningtimes":"4",
+        /*本地下行丢包连接中断阈值，超过阈值认为连接中断*/
+        "downloadpacketnoconnectvalue":"80",
+        /*本地下行丢包连接最近出现连续次数,默认只有最近两次出现下行丢包超过中断阈值认为是连接中断*/
+        "downloadpacketnoconnecttimes":"2",
+        /*p2s延迟阈值,单位ms*/
+        "p2sdelay":"800",
+        /*p2s变差次数判断*/
+        "p2sdelaywarningtimes":"3"
+    }
 
 
     /**
@@ -293,7 +342,7 @@ function GKQEManager(){
     }
 
     /**
-     * 清空serverConfig中的所有字段,再用默认配置(defaultConfig)重新覆盖服务器端配置(serverConfig)
+     * 清空serverConfig中的所有字段,再用默认配置(defaultConfig,defaultZNGZConfig)重新覆盖服务器端配置(serverConfig)
      * @param groupType 用户组类型  值为 stu  tea  admin
      * */
     this.resetScByDc = function(groupType){
@@ -318,6 +367,11 @@ function GKQEManager(){
         for(dk in this.defaultConfig){
             this.serverConfig[dk] = this.defaultConfig[dk];
         }
+        for(dk2 in this.defaultZNGZConfig){
+            this.serverConfig[dk2] = this.defaultZNGZConfig[dk2];
+        }
+
+        //console.log(JSON.stringify(this.defaultConfig))
     }
 
     /**
@@ -338,32 +392,84 @@ function GKQEManager(){
      * 'is_buy':'1',
      * 'strategy':'ClassRoom_Base_1v1'
      * }
+     * @param reqUrl 接口地址
      * */
-    this.requestGKQE = function(argObj){
-        //currentID可以防止多次并发请求误操作
-        if(currentID > 0xffffffff - 1)
+    this.requestGKQE = function(argObj,reqUrl){
+        //currentGKQEID可以防止多次并发请求误操作
+        if(currentGKQEID > 0xffffffff - 1)
         {
-            currentID = 0;
+            currentGKQEID = 0;
         }else{
-            currentID++;
+            currentGKQEID++;
         }
-        var loader = new GKQELoader(currentID);
+        var loader = new GKQELoader(currentGKQEID,reqUrl);
         loader.loadData(
             argObj,
-            function(id,data){
-                if(id != currentID)
+            function(id,strategy,data){
+                if(id != currentGKQEID)
                     return;
                 //ons.notification.alert(JSON.stringify(data));
+                selfInstance.strategy = strategy
                 selfInstance.jiexiGKQE(data);
             },
-            function(id,err){
-                if(id != currentID)
+            function(id,strategy,err){
+                if(id != currentGKQEID)
                     return;
-            info = "请求GKQE接口时出错,错误:" + err.responseText;
-            selfInstance.dispatchEvent(new Event(GKQEManager.RequestErr));
-        }
+                selfInstance.info = "请求GKQE接口的策略:"+strategy+"时出错,错误:" + err.responseText;
+                selfInstance.strategy = strategy
+                selfInstance.dispatchEvent(new Event(GKQEManager.RequestErr));
+            }
         );
     }
+
+    /**
+     * 请求GKQE相关配置信息
+     * @param argObj是请求参数的obj封装,示例如下
+     * defaultdata={
+     * 'relId':'4233',
+     * 'user_occup':'1',
+     * 'tea_group':'9',
+     * 'type':'tea',
+     * 'buildver':'1.3.0.2',
+     * 'lang':'Cn',
+     * 'from':'Mac',
+     * 'os':'Mac',
+     * 'region':'Default',
+     * 'ssoToken':'e1d5979e20ce1c13a2318ac892aa076b',
+     * 'token':'4233_e7a54cb0dd746b8819f266456ac6d7a7',
+     * 'is_buy':'1',
+     * 'strategy':'ClassRoom_Base_1v1'
+     * }
+     * @param reqUrl 接口地址
+     * */
+    this.requestZNGZ = function(argObj,reqUrl){
+        //requestZNGZID可以防止多次并发请求误操作
+        if(currentZNGZID > 0xffffffff - 1)
+        {
+            currentZNGZID = 0;
+        }else{
+            currentZNGZID++;
+        }
+        var loader = new GKQELoader(currentZNGZID,reqUrl);
+        loader.loadData(
+            argObj,
+            function(id,strategy,data){
+                if(id != currentZNGZID)
+                    return;
+                //ons.notification.alert(JSON.stringify(data));
+                selfInstance.strategy = strategy
+                selfInstance.jiexiGKQE(data);
+            },
+            function(id,strategy,err){
+                if(id != currentZNGZID)
+                    return;
+                selfInstance.info = "请求GKQE接口的策略:"+strategy+"时出错,错误:" + err.responseText;
+                selfInstance.strategy = strategy
+                selfInstance.dispatchEvent(new Event(GKQEManager.RequestErr));
+            }
+        );
+    }
+
 
     /**
      * 解析服务器返回的GKQE数据,并填充至serverConfig
@@ -382,7 +488,7 @@ function GKQEManager(){
             try{
                 var serData = JSON.parse(serDataStr);
             }catch(err){
-                info = 'GKQE的json数据转换失败,原因:' + err;
+                this.info = this.strategy + '的json数据转换失败,原因:' + err;
                 this.dispatchEvent(new Event(GKQEManager.CovertErr));
                 b = false;
             }
@@ -392,13 +498,13 @@ function GKQEManager(){
             for(key in serData){
                 this.serverConfig[key] = serData[key];
             }
-            alert(JSON.stringify(this.serverConfig));
-            info = 'GKQE配置加载完毕'
+            console.log(JSON.stringify(this.serverConfig));
+            this.info = this.strategy + '的配置加载完毕'
             this.dispatchEvent(new Event(GKQEManager.Complete));
         }else{
             //由于某些原因未能查到指定条件对应的GKQE
             var errinfo = resObj['remindMsg'] || "";
-            info = 'GKQE配置加载出现问题,原因是服务器端返回了错误:' + errinfo;
+            this.info = this.strategy + '的配置加载出现问题,原因是服务器端返回了错误:' + errinfo;
             this.dispatchEvent(new Event(GKQEManager.ServerErr));
         }
     }
@@ -431,20 +537,23 @@ GKQEManager.instance.ginit();
 
 
 
-function GKQELoader(_id){
+function GKQELoader(_id,reqUrl){
     //唯一ID
     const id = _id;
     //获取GKQE配置信息的url
-    var getGKQEInfoURL = 'https://www.51talk.com/Ac/AcConf/getGKAndQE';
+    var getGKQEInfoURL = reqUrl || 'http://t6.51talk.com/Ac/AcConf/getGKAndQE';
     //接口请求的超时时间
-    var tout = 30000;
+    var tout = 10000;
     //要请求的接口数据的数据类型
     var requetDataType = 'jsonp';
     var jsonpCallBackName = 'jsoncallback';
     //用于数据请求的请求类型
     var requestMethod = 'post';
+    //策略名
+    var strategy = ''
     this.loadData = function(argObj,compFunc,errFun){
         //alert(JSON.stringify(argObj))
+        strategy = argObj["strategy"];
         $.ajax({
             url:getGKQEInfoURL,
             timeout:tout,//默认请求超时时间30秒
@@ -455,13 +564,13 @@ function GKQELoader(_id){
             success:function(data,b){
                 //ons.notification.alert(JSON.stringify(data));
                 if(compFunc != null && compFunc != undefined){
-                    compFunc(id,data);
+                    compFunc(id,strategy,data);
                 }
             },
             error:function(err){
                 //alert(err.responseText);
                 if(errFun != null && errFun != undefined){
-                    errFun(id,err);
+                    errFun(id,strategy,err);
                 }
             }
         })

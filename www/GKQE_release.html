@@ -35,16 +35,23 @@
         }
 
         //请求GKQE配置信息
-        function reqGKQEInfo(reqDataStr){
+        function reqGKQEInfo(reqDataStr,reqURL){
 
-            GKQEManager.instance.requestGKQE(JSON.parse(reqDataStr));
+            GKQEManager.instance.requestGKQE(JSON.parse(reqDataStr),reqURL);
+        }
+
+        //请求智能感知配置信息
+        function reqZNGZInfo(reqDataStr,reqURL){
+            GKQEManager.instance.requestZNGZ(JSON.parse(reqDataStr));
         }
 
         //GKQE配置加载完毕
         GKQEManager.instance.addEventListener(GKQEManager.Complete,function(e){
             var obj = {
                 "code":"0",
-                "msg":"服务器端GKQE加载完毕"
+                "msg":"服务器端GKQE加载完毕",
+                "gkData":GKQEManager.instance.serverConfig,
+                "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
@@ -54,7 +61,9 @@
         GKQEManager.instance.addEventListener(GKQEManager.ServerErr,function(e){
             var obj = {
                 "code":"1",
-                "msg":"服务器端GKQE加载失败,使用本地默认配置"
+                "msg":"服务器端GKQE加载失败,使用本地默认配置",
+                "gkData":GKQEManager.instance.serverConfig,
+                "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
@@ -64,7 +73,9 @@
         GKQEManager.instance.addEventListener(GKQEManager.RequestErr,function(e){
             var obj = {
                 "code":"2",
-                "msg":"无法请求接口"
+                "msg":"无法请求接口",
+                "gkData":GKQEManager.instance.serverConfig,
+                "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
@@ -74,7 +85,9 @@
         GKQEManager.instance.addEventListener(GKQEManager.CovertErr,function(e){
             var obj = {
                 "code":"4",
-                "msg":"返回的数据转换JSON时发生错误"
+                "msg":"返回的数据转换JSON时发生错误",
+                "gkData":GKQEManager.instance.serverConfig,
+                "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
