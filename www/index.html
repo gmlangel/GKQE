@@ -229,27 +229,46 @@
       window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
     })
 
-      var defaultdata={
-        'relId':'799547',
-        'type':'stu',
-        'buildver':'1.3.0.2',
-        'lang':'Cn',
-        'from':'Mac',
-        'os':'Mac',
-        'region':'CN',
-        'ssoToken':'68390abdc597e0fbb1b912ae06c9176d',
-        'token':'799547_c7394371f7652d6894332b24186cbb0estu',
-        'strategy':'ClassRoom_Base_1v1',
-        'user_occup':'1',
-        'course_type_ex':'0',
-        'course_style':'0',
-        'class_room_type':'3',
-        'mac_role_style':'0'
-      }
+//      var defaultdata={
+//        'relId':'799547',
+//        'type':'stu',
+//        'buildver':'1.3.0.2',
+//        'lang':'Cn',
+//        'from':'Mac',
+//        'os':'Mac',
+//        'region':'CN',
+//        'ssoToken':'68390abdc597e0fbb1b912ae06c9176d',
+//        'token':'799547_c7394371f7652d6894332b24186cbb0estu',
+//        'strategy':'ClassRoom_Base_1v1',
+//        'user_occup':'1',
+//        'course_type_ex':'0',
+//        'course_style':'0',
+//        'class_room_type':'3',
+//        'mac_role_style':'0'
+//      }
+    var defaultdata={
+      'tea_group':'9',
+      'buildver':'1.3.0.3',
+      'class_room_type':'3',
+      'mac_role_style':'0',
+      'user_occup':'1',
+      'from':'Mac',
+      'type':'stu',
+      'os':'Mac',
+      'ssoToken':'68390abdc597e0fbb1b912ae06c9176d',
+      'token':'799547_c7394371f7652d6894332b24186cbb0estu',
+      'relId':'799547',
+      'is_buy':'1',
+      'region':'CN',
+      'lang':'Cn',
+      'strategy':'ClassRoom_Base_1v1',
+      'course_type_ex':'0',
+      'course_style':'0'
+    }
       reqGKQEInfo(JSON.stringify(defaultdata));
 
-    defaultdata["strategy"] = "Mac_Intelligent_Perception"
-    reqZNGZInfo(JSON.stringify(defaultdata));
+    //defaultdata["strategy"] = "Mac_Intelligent_Perception"
+    //reqZNGZInfo(JSON.stringify(defaultdata));
 
 
 

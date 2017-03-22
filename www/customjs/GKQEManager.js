@@ -541,7 +541,7 @@ function GKQELoader(_id,reqUrl){
     //唯一ID
     const id = _id;
     //获取GKQE配置信息的url
-    var getGKQEInfoURL = reqUrl || 'http://t6.51talk.com/Ac/AcConf/getGKAndQE';
+    var getGKQEInfoURL = reqUrl || 'http://www.51talk.com/Ac/AcConf/getGKAndQE';
     //接口请求的超时时间
     var tout = 10000;
     //要请求的接口数据的数据类型
