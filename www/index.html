@@ -196,7 +196,7 @@
         "msg":"服务器端GKQE加载完毕"
       };
       //回调swift
-      window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+     // window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
     })
 
     //GKQE配置加载失败,使用本地默认配置
@@ -206,7 +206,7 @@
         "msg":"服务器端GKQE加载失败,使用本地默认配置"
       };
       //回调swift
-      window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+     // window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
     })
 
     //GKQE配置加载失败,使用本地默认配置
@@ -216,7 +216,7 @@
         "msg":"无法请求接口"
       };
       //回调swift
-      window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+    //  window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
     })
 
     //GKQE配置加载失败,使用本地默认配置
@@ -226,7 +226,7 @@
         "msg":"返回的数据转换JSON时发生错误"
       };
       //回调swift
-      window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
+    //  window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
     })
 
 //      var defaultdata={
@@ -263,9 +263,12 @@
       'lang':'Cn',
       'strategy':'ClassRoom_Base_1v1',
       'course_type_ex':'0',
-      'course_style':'0'
+      'course_style':'0',
+      'reqId':"sdf4ss"
     }
       reqGKQEInfo(JSON.stringify(defaultdata));
+    reqGKQEInfo(JSON.stringify(defaultdata));
+    reqGKQEInfo(JSON.stringify(defaultdata));
 
     //defaultdata["strategy"] = "Mac_Intelligent_Perception"
     //reqZNGZInfo(JSON.stringify(defaultdata));

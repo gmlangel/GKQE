@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae3022df-5803-47b4-a304-bc342c4f9e34" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/customjs/GKQEManager.js" afterPath="$PROJECT_DIR$/www/customjs/GKQEManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
@@ -27,8 +28,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6025643">
-              <caret line="276" column="6" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+            <state vertical-scroll-proportion="-3.235294">
+              <caret line="266" column="12" selection-start-line="266" selection-start-column="7" selection-end-line="266" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -37,11 +38,10 @@
       <file leaf-file-name="GKQEManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6761269">
-              <caret line="206" column="18" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.5993322">
+              <caret line="581" column="31" selection-start-line="581" selection-start-column="31" selection-end-line="581" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
-                <element signature="e#6476#8794#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -50,8 +50,8 @@
       <file leaf-file-name="GKQE_release.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="34.291668">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+            <state vertical-scroll-proportion="-21.875">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,8 +112,8 @@
         <option value="$PROJECT_DIR$/www/GKQE_Data_test.html" />
         <option value="$PROJECT_DIR$/www/sss.html" />
         <option value="$PROJECT_DIR$/www/GKQE_release.html" />
-        <option value="$PROJECT_DIR$/www/customjs/GKQEManager.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/customjs/GKQEManager.js" />
       </list>
     </option>
   </component>
@@ -152,7 +152,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -290,6 +289,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,10 +374,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="723" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="723" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3515625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3515625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -413,6 +413,273 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="404" column="29" selection-start-line="404" selection-start-column="29" selection-end-line="404" selection-end-column="29" />
+          <folding>
+            <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsenui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsen-css-components.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="19" selection-start-line="489" selection-start-column="19" selection-end-line="489" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_Data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#10;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#12;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#14;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="266" column="5" selection-start-line="266" selection-start-column="5" selection-end-line="266" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsenui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsen-css-components.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="19" selection-start-line="489" selection-start-column="19" selection-end-line="489" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_Data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#10;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#12;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#14;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="276" column="6" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsenui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsen-css-components.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="19" selection-start-line="489" selection-start-column="19" selection-end-line="489" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_Data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#10;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#12;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#14;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="276" column="6" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsenui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsen-css-components.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="19" selection-start-line="489" selection-start-column="19" selection-end-line="489" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_Data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#10;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#12;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#14;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="276" column="6" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsenui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/onsenui/css/onsen-css-components.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="19" selection-start-line="489" selection-start-column="19" selection-end-line="489" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/GKQE_Data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#10;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#12;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-input#0;n#p#14;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -427,7 +694,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
-            <element signature="e#6476#8794#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -483,7 +749,6 @@
           <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
-            <element signature="e#6476#8794#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -582,27 +847,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/GKQE_release.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="34.291668">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state vertical-scroll-proportion="-21.875">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6025643">
-          <caret line="276" column="6" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+        <state vertical-scroll-proportion="-3.235294">
+          <caret line="266" column="12" selection-start-line="266" selection-start-column="7" selection-end-line="266" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35623002">
+          <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/customjs/GKQEManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6761269">
-          <caret line="206" column="18" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.5993322">
+          <caret line="581" column="31" selection-start-line="581" selection-start-column="31" selection-end-line="581" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc;n#GKQEManager#0" expanded="false" />
-            <element signature="e#6476#8794#0" expanded="false" />
           </folding>
         </state>
       </provider>

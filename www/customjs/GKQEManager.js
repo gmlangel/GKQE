@@ -10,8 +10,10 @@ function GKQEManager(){
     /**
      * 当前的GKQE请求ID
      * */
-    var currentGKQEID = 0;
-    var currentZNGZID = 0;
+    var currentGKQEID = "";
+    var currentZNGZID = "";
+    var loadedGKQE = {};
+    var loadedZNGZ = {};
     /**
      * 默认配置
      * */
@@ -123,7 +125,7 @@ function GKQEManager(){
         /*是否显示"只看老师复选框"rr*/
         "canShowOnlytea":"1",
         /*"想对对方说"控件的显示样式,0为不显示 2为显示"想对老师说"  1为显示"想对学生说"*/
-        "toSayStyle":"0",
+        "toSayStyle":"2",
         /*是否允许用户手动翻页*/
         "canToPage":"1",
         /*是否需要对教材尺寸进行特殊处理*/
@@ -148,23 +150,23 @@ function GKQEManager(){
         /*是否可以发送光标同步数据*/
         "canSendMousePos":"1",
         /*是否可以接收光标同步数据*/
-        "canReceiveMousePos":"1",
+        "canReceiveMousePos":"0",
         /*是否可以绘制白板数据，是否显示白板工具条*/
         "canDrawWhiteBorad":"1",
         /*是否需要显示页码同步按钮*/
-        "canNeedSyncPagebtn":"1",
+        "canNeedSyncPagebtn":"0",
         /*是否可以向远端发送跳转pdf教材命令*/
-        "canSendChangePageNum":"0",
+        "canSendChangePageNum":"1",
         /*是否可以清空远端的白板数据*/
         "canSendClearWhiteDataToRemote":"1",
         /*是否可以回退远端的白板数据*/
         "canSendUndoWhiteDataToRemote":"1",
         /*是否可以举手，申请上麦*/
-        "canHandler":"1",
+        "canHandler":"0",
         /*是否可以发送文本聊天消息*/
         "canSendMsg":"1",
         /*是否可以在教室内发送文本聊天消息（用于全体禁言和全体解禁）*/
-        "canSendMsgInClassRoom":"0",
+        "canSendMsgInClassRoom":"1",
         /*是否可以发送音频上行数据*/
         "canAudioUpload":"1",
         /*是否可以发送视频上行数据*/
@@ -172,49 +174,49 @@ function GKQEManager(){
         /*是否可以订阅视频下行数据*/
         "canVideoDownload":"1",
         /*是否要显示老师提示语工具条*/
-        "canShowTeacherTipsTool":"0",
+        "canShowTeacherTipsTool":"1",
         /*是否可以设置其他用户上下麦*/
-        "canSetOtherHand":"0",
+        "canSetOtherHand":"1",
         /*是否可以录音*/
         "canRecode":"1",
         /*可以设置其他人教室内的一些权限*/
-        "canSetCommon":"0",
+        "canSetCommon":"1",
         /*是否可以踢人出教室*/
-        "canKickUser":"0",
+        "canKickUser":"1",
         /*是否允许发送互动问题*/
         "canSendQuestionHudong":"0",
         /*是否允许回答互动问题*/
         "canSendAnswerHudong":"0",
         /*白板工具的笔触颜色RGBA  0x0078ffff*/
-        "whiteSrokeColor":"7929855",
+        "whiteSrokeColor":"4278190335",
         /*聊天消息右键菜单的样式 0为不显示右键菜单  2为显示老师应该显示的菜单*/
-        "chatItemMenuType":"0",
+        "chatItemMenuType":"2",
         /*是否显示level等级标签*/
-        "canShowLevelTag":"1",
+        "canShowLevelTag":"0",
         /*是否允许切换视频窗口*/
         "canSwapVideoWindow":"1",
         /*是否允许关闭自己的摄像头*/
-        "canCloseOrOpenMyCamera":"1",
+        "canCloseOrOpenMyCamera":"0",
         /*是否显示并渲染本地视频窗口*/
         "canShowlocalView":"1",
         /*是否可以控制麦克风  静音和恢复*/
         "canControlMic":"1",
         /*是否显示"只看老师复选框"rr*/
-        "canShowOnlytea":"1",
+        "canShowOnlytea":"0",
         /*"想对对方说"控件的显示样式,0为不显示 2为显示"想对老师说"  1为显示"想对学生说"*/
         "toSayStyle":"0",
         /*是否允许用户手动翻页*/
         "canToPage":"1",
         /*是否需要对教材尺寸进行特殊处理*/
-        "needPDFSpecialTreatment":"0",
+        "needPDFSpecialTreatment":"1",
         /*是否可以显示"课后评价面板"*/
-        "canShowEvaluePanel":"1",
+        "canShowEvaluePanel":"0",
         /*是否需要统计svc单次连接时长*/
         "needCountSVCLinkTime":"1",
         /*是否显示白板工具条的"tips"*/
-        "canShowWhiteboardTips":"1",
+        "canShowWhiteboardTips":"0",
         /*用户类型分组,同一个人可以属于多个分组,但分组不能冲突,比如"0,4"是可以的,但是"0,1"是不可以的 0为学生(无论是stu还是stu_pso都是学生)  1为老师  2为销售  3为flashTeacher  4为教室内部的管理员*/
-        "group":"0",
+        "group":"1",
         /*星星工具条的显示状态 0为不显示  1为显示学生样式 2为显示老师样式*/
         "starToolBarStyle":"0"
     };
@@ -293,7 +295,7 @@ function GKQEManager(){
         /*是否显示白板工具条的"tips"*/
         "canShowWhiteboardTips":"1",
         /*用户类型分组,同一个人可以属于多个分组,但分组不能冲突,比如"0,4"是可以的,但是"0,1"是不可以的 0为学生(无论是stu还是stu_pso都是学生)  1为老师  2为销售  3为flashTeacher  4为教室内部的管理员*/
-        "group":"0",
+        "group":"4",
         /*星星工具条的显示状态 0为不显示  1为显示学生样式 2为显示老师样式*/
         "starToolBarStyle":"0"
     };
@@ -398,28 +400,45 @@ function GKQEManager(){
         //currentGKQEID可以防止多次并发请求误操作
         if(currentGKQEID > 0xffffffff - 1)
         {
-            currentGKQEID = 0;
+           currentGKQEID = 0;
         }else{
-            currentGKQEID++;
+           currentGKQEID++;
+        };
+        this.serverConfig["reqId"] = argObj.reqId;
+        var loader = new GKQELoader(argObj.reqId + "_" +currentGKQEID,reqUrl);
+        if(loadedGKQE[argObj.reqId]){
+            loadedGKQE[argObj.reqId].push(loader)
+        }else{
+            loadedGKQE[argObj.reqId] = [loader];
         }
-        var loader = new GKQELoader(currentGKQEID,reqUrl);
         loader.loadData(
             argObj,
             function(id,strategy,data){
-                if(id != currentGKQEID)
+                let tid = selfInstance.getGID(id);
+                let arr = loadedGKQE[tid]
+                if(!arr || arr.length == 0){
                     return;
-                //ons.notification.alert(JSON.stringify(data));
+                }
+                loadedGKQE[tid] = [];
                 selfInstance.strategy = strategy
                 selfInstance.jiexiGKQE(data);
             },
             function(id,strategy,err){
-                if(id != currentGKQEID)
+                //移除一个loader
+                let tid = selfInstance.getGID(id);
+                let arr = loadedGKQE[tid]
+                arr.pop();
+                if(arr.length > 0)
                     return;
                 selfInstance.info = "请求GKQE接口的策略:"+strategy+"时出错,错误:" + err.responseText;
                 selfInstance.strategy = strategy
                 selfInstance.dispatchEvent(new Event(GKQEManager.RequestErr));
             }
         );
+    }
+
+    this.getGID = function(id){
+        return id.substring(0,id.indexOf("_"))
     }
 
     /**
@@ -450,18 +469,30 @@ function GKQEManager(){
         }else{
             currentZNGZID++;
         }
-        var loader = new GKQELoader(currentZNGZID,reqUrl);
+        var loader = new GKQELoader(argObj.reqId + "_" +currentZNGZID,reqUrl);
+        if(loadedZNGZ[argObj.reqId]){
+            loadedZNGZ[argObj.reqId].push(loader)
+        }else{
+            loadedZNGZ[argObj.reqId] = [loader];
+        }
         loader.loadData(
             argObj,
             function(id,strategy,data){
-                if(id != currentZNGZID)
+                let tid = selfInstance.getGID(id);
+                let arr = loadedZNGZ[tid]
+                if(!arr || arr.length == 0){
                     return;
-                //ons.notification.alert(JSON.stringify(data));
+                }
+                loadedZNGZ[tid] = [];
                 selfInstance.strategy = strategy
                 selfInstance.jiexiGKQE(data);
             },
             function(id,strategy,err){
-                if(id != currentZNGZID)
+                //移除一个loader
+                let tid = selfInstance.getGID(id);
+                let arr = loadedZNGZ[tid]
+                arr.pop();
+                if(arr.length > 0)
                     return;
                 selfInstance.info = "请求GKQE接口的策略:"+strategy+"时出错,错误:" + err.responseText;
                 selfInstance.strategy = strategy
@@ -540,8 +571,9 @@ GKQEManager.instance.ginit();
 function GKQELoader(_id,reqUrl){
     //唯一ID
     const id = _id;
+    this.gid = _id;
     //获取GKQE配置信息的url
-    var getGKQEInfoURL = reqUrl || 'http://www.51talk.com/Ac/AcConf/getGKAndQE';
+    var getGKQEInfoURL = reqUrl || 'http://t6.51talk.com/Ac/AcConf/getGKAndQE';
     //接口请求的超时时间
     var tout = 10000;
     //要请求的接口数据的数据类型
