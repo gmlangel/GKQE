@@ -10,8 +10,8 @@ function GKQEManager(){
     /**
      * 当前的GKQE请求ID
      * */
-    var currentGKQEID = "";
-    var currentZNGZID = "";
+    var currentGKQEID = 0;
+    var currentZNGZID = 0;
     var loadedGKQE = {};
     var loadedZNGZ = {};
     /**
@@ -414,8 +414,8 @@ function GKQEManager(){
         loader.loadData(
             argObj,
             function(id,strategy,data){
-                let tid = selfInstance.getGID(id);
-                let arr = loadedGKQE[tid]
+                var tid = selfInstance.getGID(id);
+                var arr = loadedGKQE[tid]
                 if(!arr || arr.length == 0){
                     return;
                 }
@@ -425,8 +425,8 @@ function GKQEManager(){
             },
             function(id,strategy,err){
                 //移除一个loader
-                let tid = selfInstance.getGID(id);
-                let arr = loadedGKQE[tid]
+                var tid = selfInstance.getGID(id);
+                var arr = loadedGKQE[tid]
                 arr.pop();
                 if(arr.length > 0)
                     return;
@@ -478,8 +478,8 @@ function GKQEManager(){
         loader.loadData(
             argObj,
             function(id,strategy,data){
-                let tid = selfInstance.getGID(id);
-                let arr = loadedZNGZ[tid]
+                var tid = selfInstance.getGID(id);
+                var arr = loadedZNGZ[tid]
                 if(!arr || arr.length == 0){
                     return;
                 }
@@ -489,8 +489,8 @@ function GKQEManager(){
             },
             function(id,strategy,err){
                 //移除一个loader
-                let tid = selfInstance.getGID(id);
-                let arr = loadedZNGZ[tid]
+                var tid = selfInstance.getGID(id);
+                var arr = loadedZNGZ[tid]
                 arr.pop();
                 if(arr.length > 0)
                     return;
