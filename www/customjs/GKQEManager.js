@@ -3,6 +3,7 @@
  */
 function GKQEManager(){
 
+    var isGKQEComplete = false;//本次GKQE是否请求完毕
     /**
      * 策略名
      * */
@@ -343,6 +344,9 @@ function GKQEManager(){
         dispatcherObj.removeEventListener(ename,func);
     }
 
+    this.setIsGKQEComplete = function(b){
+        isGKQEComplete = b;
+    }
     /**
      * 清空serverConfig中的所有字段,再用默认配置(defaultConfig,defaultZNGZConfig)重新覆盖服务器端配置(serverConfig)
      * @param groupType 用户组类型  值为 stu  tea  admin
@@ -414,16 +418,23 @@ function GKQEManager(){
         loader.loadData(
             argObj,
             function(id,strategy,data){
+                if(isGKQEComplete){
+                    return;
+                }
                 var tid = selfInstance.getGID(id);
                 var arr = loadedGKQE[tid]
                 if(!arr || arr.length == 0){
                     return;
                 }
+                isGKQEComplete = true;
                 loadedGKQE[tid] = [];
                 selfInstance.strategy = strategy
                 selfInstance.jiexiGKQE(data);
             },
             function(id,strategy,err){
+                if(isGKQEComplete){
+                    return;
+                }
                 //移除一个loader
                 var tid = selfInstance.getGID(id);
                 var arr = loadedGKQE[tid]

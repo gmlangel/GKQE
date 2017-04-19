@@ -16,6 +16,14 @@
 
 
     <script>
+        
+        /**
+         防止多次请求GKQE，成功后重复触发某一个相同操作
+         */
+        function setIsGKQEComplete(bValue){
+            GKQEManager.instance.setIsGKQEComplete(bValue == "1");
+        }
+    
         /**
          * 重置GKQE配置为本地配置
          * @param groupType 用户组类型  值为 stu  tea  admin,默认为stu
