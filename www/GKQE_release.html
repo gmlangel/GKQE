@@ -16,20 +16,14 @@
 
 
     <script>
-        
-        /**
-         防止多次请求GKQE，成功后重复触发某一个相同操作
-         */
-        function setIsGKQEComplete(bValue){
-            GKQEManager.instance.setIsGKQEComplete(bValue == "1");
-        }
     
         /**
-         * 重置GKQE配置为本地配置
-         * @param groupType 用户组类型  值为 stu  tea  admin,默认为stu
+         * 初始化GKQE默认配置
          * */
-        function resetGKQEConfig(groupType){
-            GKQEManager.instance.resetScByDc(groupType);
+        function initDefaultGKQE(){
+            var dic = GKQEManager.instance.initDefaultGKQE();
+            //回调swift
+            window.webkit.messageHandlers["defaultGKQECallback"].postMessage(JSON.stringify(dic));
         }
 
         //设置GKQE配置的某一个配置项
@@ -48,73 +42,56 @@
             GKQEManager.instance.requestGKQE(JSON.parse(reqDataStr),reqURL);
         }
 
-        //请求智能感知配置信息
-        function reqZNGZInfo(reqDataStr,reqURL){
-            GKQEManager.instance.requestZNGZ(JSON.parse(reqDataStr));
-        }
-
         //GKQE配置加载完毕
         GKQEManager.instance.addEventListener(GKQEManager.Complete,function(e){
             var obj = {
                 "code":"0",
                 "msg":"服务器端GKQE加载完毕",
                 "gkData":GKQEManager.instance.serverConfig,
-                "strategy":GKQEManager.instance.strategy
+                "strategy":GKQEManager.instance.strategy,
+                "reqData":GKQEManager.instance.reqData
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
         })
 
-        //GKQE配置加载失败,使用本地默认配置
+        //GKQE配置加载失败
         GKQEManager.instance.addEventListener(GKQEManager.ServerErr,function(e){
             var obj = {
                 "code":"1",
                 "msg":"服务器端GKQE加载失败,使用本地默认配置",
-                "gkData":GKQEManager.instance.serverConfig,
                 "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
         })
 
-        //GKQE配置加载失败,使用本地默认配置
+        //GKQE配置加载失败
         GKQEManager.instance.addEventListener(GKQEManager.RequestErr,function(e){
             var obj = {
                 "code":"2",
                 "msg":"无法请求接口",
-                "gkData":GKQEManager.instance.serverConfig,
                 "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
         })
 
-        //GKQE配置加载失败,使用本地默认配置
+        //GKQE配置加载失败
         GKQEManager.instance.addEventListener(GKQEManager.CovertErr,function(e){
             var obj = {
                 "code":"4",
                 "msg":"返回的数据转换JSON时发生错误",
-                "gkData":GKQEManager.instance.serverConfig,
                 "strategy":GKQEManager.instance.strategy
             };
             //回调swift
             window.webkit.messageHandlers["gkqeLoadeND"].postMessage(JSON.stringify(obj));
         })
-
+        
     </script>
 </head>
 <body>
 
-
-<ons-page>
-    <ons-toolbar>
-        <div class="center" id="toolbar-title"></div>
-    </ons-toolbar>
-    <ons-tabbar position="auto" animation="slide">
-        <ons-tab label="GKQE返回" page="GKQE_Data_test.html" active>
-        </ons-tab>
-    </ons-tabbar>
-</ons-page>
 
 </body>
 </html>
